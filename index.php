@@ -87,7 +87,8 @@
               <a href="index.php" class="nav-link active">
                 <i class="nav-icon fas fa-columns"></i>
                 <p>
-                  Назва проекту
+                    <?php echo $arr_project[$i];
+                    ?>
                   <span class="badge badge-info right">2</span>
                 </p>
               </a>
