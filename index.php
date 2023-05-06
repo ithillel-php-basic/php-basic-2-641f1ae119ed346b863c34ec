@@ -27,6 +27,15 @@
     $arr_project=["Вхідні", "Навчання", "Робота", "Домашні справи", "Авто"];
     $arr_tasks=[["task" =>"Співбесіда в IT компанії","date" =>"01.07.2023","type" =>"Робота","status" =>"backlog"],["task" =>"Виконати тестове завдання","date" =>"25.07.2023","type" =>"Робота","status" =>"backlog"],["task" =>"Зробити завдання до першого уроку","date" =>"27.04.2023","type" =>"Навчання","status" => "done"],["task" =>"Зустрітись з друзями","date" =>"14.05.2023","type" => "Вхідні","status" => "to-do"],["task" =>"Купити корм для кота","date" =>"null","type" => "Домашні справи","status" => "in-progress"],["task" =>"Замовити піцу","date" =>"null","type" => "Домашні справи","status" =>"to-do"]];
     $i=0;
+    function task_quantity($arr_tasks,$arr_project, $i){
+        $num=0;
+        foreach($arr_tasks as $item) {
+            if($item["type"] == $arr_project[$i]){
+                $num++;
+            }
+        }
+        return $num;
+    }
     ?>
   <div class="wrapper">
     <!-- Navbar -->
@@ -87,8 +96,9 @@
               <a href="index.php" class="nav-link active">
                 <i class="nav-icon fas fa-columns"></i>
                 <p>
-                  Назва проекту
-                  <span class="badge badge-info right">2</span>
+                    <?php echo $arr_project[$i];
+                    ?>
+                  <span class="badge badge-info right"> <?php echo task_quantity($arr_tasks,$arr_project,$i); ?></span>
                 </p>
               </a>
             </li>
