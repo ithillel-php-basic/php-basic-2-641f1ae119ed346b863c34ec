@@ -55,7 +55,9 @@
                                 <a href="#" class="btn btn-tool">
                                     <i class="fas fa-file"></i>
                                 </a>
-                                <small class="badge badge-danger"><i class="far fa-clock"></i> <?php echo $item["date"]?> </small>
+                                <?php if($item["date"] !== "null"){?>
+                               <small class="badge badge-danger"><i class="far fa-clock"></i> <?php echo task_time($item["date"])?> </small>
+                                <?php }?>
                             </div>
                         </div>
                         <?php
@@ -92,7 +94,9 @@
                                 <a href="#" class="btn btn-tool">
                                     <i class="fas fa-file"></i>
                                 </a>
-                                <small class="badge badge-danger"><i class="far fa-clock"></i> <?php echo $item["date"]?> </small>
+                                <?php if($item["date"] !== "null"){?>
+                                <small class="badge badge-danger"><i class="far fa-clock"></i> <?php echo task_time($item["date"])?> </small>
+                                <?php } ?>
                             </div>
                         </div>
                         <?php
@@ -129,7 +133,10 @@
                                 <a href="#" class="btn btn-tool">
                                     <i class="fas fa-file"></i>
                                 </a>
-                                <small class="badge badge-danger"><i class="far fa-clock"></i> <?php echo $item["date"]?> </small>
+                                <?php
+                                if($item["date"] !== "null"){?>
+                                <small class="badge badge-danger"><i class="far fa-clock"></i> <?php echo task_time($item["date"])?> </small>
+                                <?php } ?>
                             </div>
                         </div>
                         <?php
@@ -166,7 +173,9 @@
                                 <a href="#" class="btn btn-tool">
                                     <i class="fas fa-file"></i>
                                 </a>
-                                <small class="badge badge-danger"><i class="far fa-clock"></i> <?php echo $item["date"]?> </small>
+                                <?php if($item["date"] !== "null"){?>
+                                <small class="badge badge-danger"><i class="far fa-clock"></i> <?php echo task_time($item["date"])?> </small>
+                                <?php } ?>
                             </div>
                         </div>
                         <?php

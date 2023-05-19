@@ -51,21 +51,21 @@
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <!-- Add icons to the links using the .nav-icon class
                        with font-awesome or any other icon font library -->
-                    <?php foreach($arr_project as $value){
+                    <?php foreach($arr_project as $key => $value){
                         ?>
                         <li class="nav-item">
                             <a href="index.php" class="nav-link active">
                                 <i class="nav-icon fas fa-columns"></i>
                                 <p>
-                                    <?php echo $arr_project[$i];
+                                    <?php echo $arr_project[$key];
                                     ?>
-                                    <span class="badge badge-info right"> <?php echo task_quantity($arr_tasks,$arr_project,$i); ?></span>
+                                    <span class="badge badge-info right"> <?php echo task_quantity($arr_tasks,$arr_project,$key); ?></span>
                                 </p>
                             </a>
                         </li>
                         <?php
-                        $i++;
-                    } ?>
+                    }
+                    ?>
                     <li class="nav-item">
                         <a href="index.php" class="nav-link bg-olive">
                             <i class="nav-icon fas fa-plus"></i>
