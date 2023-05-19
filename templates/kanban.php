@@ -55,9 +55,17 @@
                                 <a href="#" class="btn btn-tool">
                                     <i class="fas fa-file"></i>
                                 </a>
-                                <?php if($item["date"] !== "null"){?>
-                               <small class="badge badge-danger"><i class="far fa-clock"></i> <?php echo task_time($item["date"])?> </small>
-                                <?php }?>
+                                <?php if($item["date"] !== "null"){
+                                    $date_difference = task_time($item["date"]);
+                                    if($date_difference > 24){
+                                    ?>
+                               <small class="badge badge-success"><i class="far fa-clock"></i> <?php echo task_time_output($date_difference)?> </small>
+                                <?php
+                                    }
+                                else{ ?>
+                               <small class="badge badge-danger"><i class="far fa-clock"></i> <?php echo task_time_output($date_difference)?> </small>
+                              <?php }
+                                } ?>
                             </div>
                         </div>
                         <?php
@@ -94,9 +102,17 @@
                                 <a href="#" class="btn btn-tool">
                                     <i class="fas fa-file"></i>
                                 </a>
-                                <?php if($item["date"] !== "null"){?>
-                                <small class="badge badge-danger"><i class="far fa-clock"></i> <?php echo task_time($item["date"])?> </small>
-                                <?php } ?>
+                                <?php if($item["date"] !== "null"){
+                                    $date_difference = task_time($item["date"]);
+                                    if($date_difference > 24){
+                                        ?>
+                                        <small class="badge badge-success"><i class="far fa-clock"></i> <?php echo task_time_output($date_difference)?> </small>
+                                        <?php
+                                    }
+                                else{ ?>
+                                    <small class="badge badge-danger"><i class="far fa-clock"></i> <?php echo task_time_output($date_difference)?> </small>
+                                <?php }
+                                } ?>
                             </div>
                         </div>
                         <?php
@@ -133,10 +149,17 @@
                                 <a href="#" class="btn btn-tool">
                                     <i class="fas fa-file"></i>
                                 </a>
-                                <?php
-                                if($item["date"] !== "null"){?>
-                                <small class="badge badge-danger"><i class="far fa-clock"></i> <?php echo task_time($item["date"])?> </small>
-                                <?php } ?>
+                                <?php if($item["date"] !== "null"){
+                                    $date_difference = task_time($item["date"]);
+                                    if($date_difference > 24){
+                                        ?>
+                                        <small class="badge badge-success"><i class="far fa-clock"></i> <?php echo task_time_output($date_difference)?> </small>
+                                        <?php
+                                    }
+                                    else{ ?>
+                                        <small class="badge badge-danger"><i class="far fa-clock"></i> <?php echo task_time_output($date_difference)?> </small>
+                                    <?php }
+                                } ?>
                             </div>
                         </div>
                         <?php
@@ -173,9 +196,17 @@
                                 <a href="#" class="btn btn-tool">
                                     <i class="fas fa-file"></i>
                                 </a>
-                                <?php if($item["date"] !== "null"){?>
-                                <small class="badge badge-danger"><i class="far fa-clock"></i> <?php echo task_time($item["date"])?> </small>
-                                <?php } ?>
+                                <?php if($item["date"] !== "null"){
+                                    $date_difference = task_time($item["date"]);
+                                    if($date_difference > 24){
+                                        ?>
+                                        <small class="badge badge-success"><i class="far fa-clock"></i> <?php echo task_time_output($date_difference)?> </small>
+                                        <?php
+                                    }
+                                    else{ ?>
+                                        <small class="badge badge-danger"><i class="far fa-clock"></i> <?php echo task_time_output($date_difference)?> </small>
+                                    <?php }
+                                } ?>
                             </div>
                         </div>
                         <?php

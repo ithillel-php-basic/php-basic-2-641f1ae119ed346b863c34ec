@@ -5,7 +5,7 @@ $arr_project=["Вхідні", "Навчання", "Робота", "Домашн�
 $arr_tasks=[["task" =>"Співбесіда в IT компанії","date" =>"01.07.2023","type" =>"Робота","status" =>"backlog"],
     ["task" =>"Виконати тестове завдання","date" =>"25.07.2023","type" =>"Робота","status" =>"backlog"],
     ["task" =>"Зробити завдання до першого уроку","date" =>"27.04.2023","type" =>"Навчання","status" => "done"],
-    ["task" =>"Зустрітись з друзями","date" =>"19.05.2023","type" => "Вхідні","status" => "to-do"],
+    ["task" =>"Зустрітись з друзями","date" =>"20.05.2023","type" => "Вхідні","status" => "to-do"],
     ["task" =>"Купити корм для кота","date" =>"null","type" => "Домашні справи","status" => "in-progress"],
     ["task" =>"Замовити піцу","date" =>"null","type" => "Домашні справи","status" =>"to-do"]];
 $title = "Завдання та проекти | Дошка";
@@ -51,7 +51,10 @@ function task_time($date){
     $date_difference = $timestamp_date - $date_now;
     $date_difference = $date_difference / 3600;
     $date_difference = floor($date_difference);
+    return $date_difference;
+}
 
+function task_time_output($date_difference){
     if($date_difference < 0){
         return;
     }else if($date_difference <= 24){
@@ -72,3 +75,4 @@ function task_time($date){
             }
     }
 }
+
