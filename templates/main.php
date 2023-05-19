@@ -58,8 +58,9 @@
                                 <i class="nav-icon fas fa-columns"></i>
                                 <p>
                                     <?php echo $arr_project[$key];
+                                    $project =  $arr_project[$key];
                                     ?>
-                                    <span class="badge badge-info right"> <?php echo task_quantity($arr_tasks,$arr_project,$key); ?></span>
+                                    <span class="badge badge-info right"> <?php echo task_quantity($arr_tasks,$project); ?></span>
                                 </p>
                             </a>
                         </li>
