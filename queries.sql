@@ -28,8 +28,3 @@ UPDATE task SET status='in-progress' WHERE id = 1;
 UPDATE task SET status='done' WHERE id = 2;
 
 UPDATE task SET title='Купити корм для песика' WHERE id = 5;
-
-обновление мейн
-на таск(5) и гит ресет 
-проверка комитов 
-и пуш
