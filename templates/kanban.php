@@ -39,7 +39,7 @@
                         ?>
                         <div class="card card-info card-outline" data-task-id="1">
                             <div class="card-header">
-                                <h5 class="card-title"> <?php echo $item["task"]?> </h5>
+                                <h5 class="card-title"> <?php echo htmlspecialchars($item["title"])?> </h5>
                                 <div class="card-tools">
                                     <a href="#" class="btn btn-tool btn-link">#3</a>
                                     <a href="#" class="btn btn-tool">
@@ -55,15 +55,15 @@
                                 <a href="#" class="btn btn-tool">
                                     <i class="fas fa-file"></i>
                                 </a>
-                                <?php if($item["date"] !== "null"){
-                                    $date_difference = task_time($item["date"]);
+                                <?php if($item["deadline"] !== null){
+                                    $date_difference = task_time($item["deadline"]);
                                     if($date_difference > 24){
                                     ?>
-                               <small class="badge badge-success"><i class="far fa-clock"></i> <?php echo task_time_output($date_difference)?> </small>
+                               <small class="badge badge-success"><i class="far fa-clock"></i> <?php echo htmlspecialchars(task_time_output($date_difference))?> </small>
                                 <?php
                                     }
                                 else{ ?>
-                               <small class="badge badge-danger"><i class="far fa-clock"></i> <?php echo task_time_output($date_difference)?> </small>
+                               <small class="badge badge-danger"><i class="far fa-clock"></i> <?php echo htmlspecialchars(task_time_output($date_difference))?> </small>
                               <?php }
                                 } ?>
                             </div>
@@ -86,7 +86,7 @@
                         ?>
                         <div class="card card-info card-outline" data-task-id="1">
                             <div class="card-header">
-                                <h5 class="card-title"> <?php echo $item["task"]?> </h5>
+                                <h5 class="card-title"> <?php echo htmlspecialchars($item["title"])?> </h5>
                                 <div class="card-tools">
                                     <a href="#" class="btn btn-tool btn-link">#3</a>
                                     <a href="#" class="btn btn-tool">
@@ -102,15 +102,15 @@
                                 <a href="#" class="btn btn-tool">
                                     <i class="fas fa-file"></i>
                                 </a>
-                                <?php if($item["date"] !== "null"){
-                                    $date_difference = task_time($item["date"]);
+                                <?php if($item["deadline"] !== null){
+                                    $date_difference = task_time($item["deadline"]);
                                     if($date_difference > 24){
                                         ?>
-                                        <small class="badge badge-success"><i class="far fa-clock"></i> <?php echo task_time_output($date_difference)?> </small>
+                                        <small class="badge badge-success"><i class="far fa-clock"></i> <?php echo htmlspecialchars(task_time_output($date_difference))?> </small>
                                         <?php
                                     }
                                 else{ ?>
-                                    <small class="badge badge-danger"><i class="far fa-clock"></i> <?php echo task_time_output($date_difference)?> </small>
+                                    <small class="badge badge-danger"><i class="far fa-clock"></i> <?php echo htmlspecialchars(task_time_output($date_difference))?> </small>
                                 <?php }
                                 } ?>
                             </div>
@@ -133,7 +133,7 @@
                         ?>
                         <div class="card card-info card-outline" data-task-id="1">
                             <div class="card-header">
-                                <h5 class="card-title"> <?php echo $item["task"]?> </h5>
+                                <h5 class="card-title"> <?php echo htmlspecialchars($item["title"])?> </h5>
                                 <div class="card-tools">
                                     <a href="#" class="btn btn-tool btn-link">#3</a>
                                     <a href="#" class="btn btn-tool">
@@ -149,15 +149,15 @@
                                 <a href="#" class="btn btn-tool">
                                     <i class="fas fa-file"></i>
                                 </a>
-                                <?php if($item["date"] !== "null"){
-                                    $date_difference = task_time($item["date"]);
+                                <?php if($item["deadline"] !== null){
+                                    $date_difference = task_time($item["deadline"]);
                                     if($date_difference > 24){
                                         ?>
-                                        <small class="badge badge-success"><i class="far fa-clock"></i> <?php echo task_time_output($date_difference)?> </small>
+                                        <small class="badge badge-success"><i class="far fa-clock"></i> <?php echo htmlspecialchars(task_time_output($date_difference))?> </small>
                                         <?php
                                     }
                                     else{ ?>
-                                        <small class="badge badge-danger"><i class="far fa-clock"></i> <?php echo task_time_output($date_difference)?> </small>
+                                        <small class="badge badge-danger"><i class="far fa-clock"></i> <?php echo htmlspecialchars(task_time_output($date_difference))?> </small>
                                     <?php }
                                 } ?>
                             </div>
@@ -180,7 +180,7 @@
                         ?>
                         <div class="card card-info card-outline" data-task-id="1">
                             <div class="card-header">
-                                <h5 class="card-title"> <?php echo $item["task"]?> </h5>
+                                <h5 class="card-title"> <?php echo htmlspecialchars($item["title"])?> </h5>
                                 <div class="card-tools">
                                     <a href="#" class="btn btn-tool btn-link">#3</a>
                                     <a href="#" class="btn btn-tool">
@@ -196,15 +196,15 @@
                                 <a href="#" class="btn btn-tool">
                                     <i class="fas fa-file"></i>
                                 </a>
-                                <?php if($item["date"] !== "null"){
-                                    $date_difference = task_time($item["date"]);
+                                <?php if($item["deadline"] !== null){
+                                    $date_difference = task_time($item["deadline"]);
                                     if($date_difference > 24){
                                         ?>
-                                        <small class="badge badge-success"><i class="far fa-clock"></i> <?php echo task_time_output($date_difference)?> </small>
+                                        <small class="badge badge-success"><i class="far fa-clock"></i> <?php echo htmlspecialchars(task_time_output($date_difference))?> </small>
                                         <?php
                                     }
                                     else{ ?>
-                                        <small class="badge badge-danger"><i class="far fa-clock"></i> <?php echo task_time_output($date_difference)?> </small>
+                                        <small class="badge badge-danger"><i class="far fa-clock"></i> <?php echo htmlspecialchars(task_time_output($date_difference))?> </small>
                                     <?php }
                                 } ?>
                             </div>

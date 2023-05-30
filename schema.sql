@@ -24,7 +24,7 @@ CREATE TABLE task(
   title VARCHAR(255) NOT NULL,
   description TEXT,
   file VARCHAR(255) NOT NULL,
-  deadline DATETIME, 
+  deadline DATE, 
   author_id INT NOT NULL,
   project_id INT NOT NULL,
   FOREIGN KEY (author_id) REFERENCES author(id),

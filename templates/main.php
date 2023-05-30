@@ -57,10 +57,10 @@
                             <a href="index.php" class="nav-link active">
                                 <i class="nav-icon fas fa-columns"></i>
                                 <p>
-                                    <?php echo $arr_project[$key];
+                                    <?php echo htmlspecialchars($arr_project[$key]);
                                     $project =  $arr_project[$key];
                                     ?>
-                                    <span class="badge badge-info right"> <?php echo task_quantity($arr_tasks,$project); ?></span>
+                                    <span class="badge badge-info right"> <?php echo htmlspecialchars(task_quantity($arr_tasks,$project)); ?></span>
                                 </p>
                             </a>
                         </li>

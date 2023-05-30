@@ -1,45 +1,79 @@
 <?php
 require_once "helpers.php";
 
-$arr_project=["Вхідні", "Навчання", "Робота", "Домашні справи", "Авто"];
-$arr_tasks=[["task" =>"Співбесіда в IT компанії","date" =>"01.07.2023","type" =>"Робота","status" =>"backlog"],
-    ["task" =>"Виконати тестове завдання","date" =>"25.07.2023","type" =>"Робота","status" =>"backlog"],
-    ["task" =>"Зробити завдання до першого уроку","date" =>"27.04.2023","type" =>"Навчання","status" => "done"],
-    ["task" =>"Зустрітись з друзями","date" =>"21.05.2023","type" => "Вхідні","status" => "to-do"],
-    ["task" =>"Купити корм для кота","date" =>"null","type" => "Домашні справи","status" => "in-progress"],
-    ["task" =>"Замовити піцу","date" =>"null","type" => "Домашні справи","status" =>"to-do"]];
+$host = 'localhost';
+$user = 'root';
+$password = '';
+$dbname = 'hillel_db';
+
+$conn = mysqli_connect($host, $user, $password, $dbname);
+if($conn === false){
+    die("FAIL TO CONNECT");
+}
+
+function dataOutput($query, $conn, $author_id){
+    $stmt = mysqli_prepare($conn, $query);
+    if ($stmt == false) {
+        die('Ошибка подготовки выражения: ' . mysqli_error($conn));
+    }
+    $stmt_bind_param = mysqli_stmt_bind_param($stmt, "i", $author_id);
+    if ($stmt_bind_param == false) {
+        die('Ошибка связывания параметров: ' . mysqli_stmt_error($conn));
+    }
+    $stmt_execute = mysqli_stmt_execute($stmt);
+    if ($stmt_execute == false) {
+        die('Ошибка выполнения запроса: ' . mysqli_stmt_error($conn));
+    }
+    $result = mysqli_stmt_get_result($stmt);
+    $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $rows;
+}
+
+$author_id = 2;
+$query_project = "SELECT id, name FROM project WHERE author_id = ?";
+$query_tasks = "SELECT title, deadline, project_id, status FROM task WHERE author_id = ?;";
+
+$arr_project_primary = dataOutput($query_project, $conn, $author_id);
+$arr_tasks_primary = dataOutput($query_tasks, $conn, $author_id);
+
+foreach ($arr_tasks_primary as $task) {
+    $projectId = $task['project_id'];
+    $projectName = '';
+    foreach ($arr_project_primary as $project) {
+        if ($project['id'] == $projectId) {
+            $projectName = $project['name'];
+            break;
+        }
+    }
+
+    $arr_tasks[] = [
+        'title' => $task['title'],
+        'deadline' => $task['deadline'],
+        'project_name' => $projectName,
+        'status' => $task['status'],
+    ];
+}
+
+$arr_project = array_column($arr_project_primary, "name");
+
+
 $title = "Завдання та проекти | Дошка";
 $mainName = "Дмитрий";
 $mainImagePath = "static/img/user2-160x160.jpg";
 
-foreach ($arr_project as $project_items) {
-    $safe_arr_project[] = htmlspecialchars($project_items);
-}
-
-unset ($project_items);
-
-foreach ($arr_tasks as $task_name => $task_items) {
-    foreach ($task_items as $item_name => $item_value) {
-        $safe_arr_tasks[$task_name][$item_name] = htmlspecialchars($item_value);
-    }
-}
-
-unset ($task_items);
-unset ($task_name);
-unset ($item_name);
 
 function task_quantity($arr_tasks,$project){
     $num=0;
     foreach($arr_tasks as $item) {
-        if($item["type"] == $project){
+        if($item["project_name"] == $project){
             $num++;
         }
     }
     return $num;
 }
 
-$content_kanban = renderTemplate("kanban.php",['arr_tasks' => $safe_arr_tasks]);
-$content_main = renderTemplate("main.php",['content_kanban' => $content_kanban, 'mainName' => $mainName, 'mainImagePath' => $mainImagePath, 'arr_project' => $safe_arr_project, 'arr_tasks' => $safe_arr_tasks]);
+$content_kanban = renderTemplate("kanban.php",['arr_tasks' => $arr_tasks]);
+$content_main = renderTemplate("main.php",['content_kanban' => $content_kanban, 'mainName' => $mainName, 'mainImagePath' => $mainImagePath, 'arr_project' => $arr_project, 'arr_tasks' => $arr_tasks]);
 $content_layout = renderTemplate("layout.php",['content_main' => $content_main, 'title' => $title]);
 
 print($content_layout);
