@@ -63,7 +63,9 @@
                                 <?php
                                     }
                                 else{ ?>
-                               <small class="badge badge-danger"><i class="far fa-clock"></i> <?php echo htmlspecialchars(task_time_output($date_difference))?> </small>
+                                    <small class="badge badge-danger"><i class="far fa-clock"></i> <?php if($date_difference > 0){
+                                            echo htmlspecialchars(task_time_output($date_difference));
+                                        }?> </small>
                               <?php }
                                 } ?>
                             </div>
@@ -110,7 +112,9 @@
                                         <?php
                                     }
                                 else{ ?>
-                                    <small class="badge badge-danger"><i class="far fa-clock"></i> <?php echo htmlspecialchars(task_time_output($date_difference))?> </small>
+                                    <small class="badge badge-danger"><i class="far fa-clock"></i> <?php if($date_difference > 0){
+                                            echo htmlspecialchars(task_time_output($date_difference));
+                                        }?> </small>
                                 <?php }
                                 } ?>
                             </div>
@@ -157,7 +161,9 @@
                                         <?php
                                     }
                                     else{ ?>
-                                        <small class="badge badge-danger"><i class="far fa-clock"></i> <?php echo htmlspecialchars(task_time_output($date_difference))?> </small>
+                                        <small class="badge badge-danger"><i class="far fa-clock"></i> <?php if($date_difference > 0){
+                                                echo htmlspecialchars(task_time_output($date_difference));
+                                            }?> </small>
                                     <?php }
                                 } ?>
                             </div>
@@ -204,7 +210,9 @@
                                         <?php
                                     }
                                     else{ ?>
-                                        <small class="badge badge-danger"><i class="far fa-clock"></i> <?php echo htmlspecialchars(task_time_output($date_difference))?> </small>
+                                        <small class="badge badge-danger"><i class="far fa-clock"></i> <?php if($date_difference > 0){
+                                                echo htmlspecialchars(task_time_output($date_difference));
+                                            }?> </small>
                                     <?php }
                                 } ?>
                             </div>
