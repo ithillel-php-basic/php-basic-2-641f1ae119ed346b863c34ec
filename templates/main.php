@@ -55,6 +55,9 @@
                         foreach ($project as $key => $value){
                             if($key == "id") {
                                 $project_id = $project[$key];
+                                $task_quantity = dataOutputTask($query_task_count, $conn, $author_id, $project_id);
+                                $task_quantity = $task_quantity[0]['task_count'];
+                                $task_quantity = strval($task_quantity);
                             }else{
                         ?>
                         <li class="nav-item">
@@ -69,7 +72,7 @@
                                 <?php echo htmlspecialchars($project[$key]);
                                 $project_task =  $project[$key];
                                 ?>
-                                <span class="badge badge-info right"> <?php echo htmlspecialchars(task_quantity($arr_tasks,$project_task)); ?></span>
+                                <span class="badge badge-info right"> <?php echo $task_quantity; ?></span>
                             </p>
                             </a>
                         </li>
