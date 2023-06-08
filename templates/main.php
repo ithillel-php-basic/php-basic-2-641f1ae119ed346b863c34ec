@@ -51,20 +51,33 @@
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <!-- Add icons to the links using the .nav-icon class
                        with font-awesome or any other icon font library -->
-                    <?php foreach($arr_project as $key => $value){
+                    <?php foreach($arr_project as $project){
+                        foreach ($project as $key => $value){
+                            if($key == "id") {
+                                $project_id = $project[$key];
+                            }else if($key == "name"){
                         ?>
                         <li class="nav-item">
-                            <a href="index.php" class="nav-link active">
-                                <i class="nav-icon fas fa-columns"></i>
-                                <p>
-                                    <?php echo htmlspecialchars($arr_project[$key]);
-                                    $project =  $arr_project[$key];
-                                    ?>
-                                    <span class="badge badge-info right"> <?php echo htmlspecialchars(task_quantity($arr_tasks,$project)); ?></span>
-                                </p>
+                            <?php if($status_project_button == $project_id){ ?>
+                             <a href="index.php?project_id=<?= $project_id; ?>" class="nav-link active">
+                            <?php
+                            }else{ ?>
+                             <a href="index.php?project_id=<?= $project_id; ?>" class="nav-link ">
+                                       <?php }?>
+                            <i class="nav-icon fas fa-columns"></i>
+                            <p>
+                                <?php echo htmlspecialchars($project[$key]);
+                                $project_task =  $project[$key];
+                                }else{
+                                $task_quantity = $project[$key];
+                            ?>
+                                <span class="badge badge-info right"> <?php echo $task_quantity; ?></span>
+                            </p>
                             </a>
                         </li>
                         <?php
+                            }
+                        }
                     }
                     ?>
                     <li class="nav-item">
