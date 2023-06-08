@@ -1,10 +1,9 @@
 <?php
 
 function getTasks($conn, $author_id, $project_id = '') {
-    if($project_id == ''){
-        $query = "SELECT title, deadline, project_id, status FROM task WHERE author_id = ?";
-    }else{
-        $query = "SELECT title, deadline, project_id, status FROM task WHERE author_id = ? AND project_id = ?";
+    $query = "SELECT title, deadline, project_id, status FROM task WHERE author_id = ?";
+    if($project_id != ''){
+        $query .= " AND project_id = ?";
     }
     $stmt = mysqli_prepare($conn, $query);
     if ($stmt === false) {

@@ -4,26 +4,26 @@ require_once "database/database_connect.php";
 require_once "function/function_task.php";
 require_once "function/function_project.php";
 
-function rowsNothing($rows)
+$conn = databaseConnect();
+function rowsEmpty($rows)
 {
-    if ($rows == null) {
+    if (empty($rows)) {
         http_response_code(404);
         exit();
     }
 }
 
-$author_id = 2;
+$author_id = 1;
 $status_project_button = 0;
 
 $arr_project = getProjects($conn, $author_id);
-rowsNothing($arr_project);
-
 $arr_tasks_primary = getTasks($conn, $author_id);
-rowsNothing($arr_tasks_primary);
+
 
 if (isset($_GET["project_id"])) {
     $project_id = $_GET["project_id"];
     $arr_tasks_primary = getTasks($conn, $author_id, $project_id);
+    rowsEmpty($arr_tasks_primary);
     $status_project_button =  $project_id;
 }
 
