@@ -52,7 +52,7 @@
                                     Зробити головну сторінку списку задач з можливістю перегляду,
                                     створення, редагування, видалення задач.
                                 </p>
-                                <a href="#" class="btn btn-tool">
+                                <a href="<?php echo htmlspecialchars($item["file"])?>" class="btn btn-tool">
                                     <i class="fas fa-file"></i>
                                 </a>
                                 <?php if($item["deadline"] !== null){
@@ -101,7 +101,7 @@
                                     Зробити головну сторінку списку задач з можливістю перегляду,
                                     створення, редагування, видалення задач.
                                 </p>
-                                <a href="#" class="btn btn-tool">
+                                <a href="<?php echo htmlspecialchars($item["file"])?>" class="btn btn-tool">
                                     <i class="fas fa-file"></i>
                                 </a>
                                 <?php if($item["deadline"] !== null){
@@ -150,7 +150,7 @@
                                     Зробити головну сторінку списку задач з можливістю перегляду,
                                     створення, редагування, видалення задач.
                                 </p>
-                                <a href="#" class="btn btn-tool">
+                                <a href="<?php echo htmlspecialchars($item["file"])?>" class="btn btn-tool">
                                     <i class="fas fa-file"></i>
                                 </a>
                                 <?php if($item["deadline"] !== null){
@@ -199,7 +199,7 @@
                                     Зробити головну сторінку списку задач з можливістю перегляду,
                                     створення, редагування, видалення задач.
                                 </p>
-                                <a href="#" class="btn btn-tool">
+                                <a href="<?php echo htmlspecialchars($item["file"])?>" class="btn btn-tool">
                                     <i class="fas fa-file"></i>
                                 </a>
                                 <?php if($item["deadline"] !== null){

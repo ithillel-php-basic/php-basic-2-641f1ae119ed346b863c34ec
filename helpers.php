@@ -143,3 +143,20 @@ function renderTemplate($name, array $data = []) {
 
     return $result;
 }
+
+function renderPages($name, array $data = []) {
+    $name = 'pages/' . $name;
+    $result = '';
+
+    if (!is_readable($name)) {
+        return $result;
+    }
+
+    ob_start();
+    extract($data);
+    require $name;
+
+    $result = ob_get_clean();
+
+    return $result;
+}

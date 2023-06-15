@@ -41,6 +41,7 @@ foreach ($arr_tasks_primary as $task) {
         'deadline' => $task['deadline'],
         'project_name' => $projectName,
         'status' => $task['status'],
+        'file' => $task['file'],
     ];
 }
 
@@ -48,8 +49,8 @@ $title = "Завдання та проекти | Дошка";
 $mainName = "Дмитрий";
 $mainImagePath = "static/img/user2-160x160.jpg";
 
-$content_kanban = renderTemplate("kanban.php",['arr_tasks' => $arr_tasks]);
-$content_main = renderTemplate("main.php",['content_kanban' => $content_kanban, 'mainName' => $mainName, 'mainImagePath' => $mainImagePath, 'arr_project' => $arr_project, 'arr_tasks' => $arr_tasks, 'status_project_button' => $status_project_button]);
+$content = renderTemplate("kanban.php",['arr_tasks' => $arr_tasks]);
+$content_main = renderTemplate("main.php",['content' => $content, 'mainName' => $mainName, 'mainImagePath' => $mainImagePath, 'arr_project' => $arr_project, 'arr_tasks' => $arr_tasks, 'status_project_button' => $status_project_button]);
 $content_layout = renderTemplate("layout.php",['content_main' => $content_main, 'title' => $title]);
 
 print($content_layout);
