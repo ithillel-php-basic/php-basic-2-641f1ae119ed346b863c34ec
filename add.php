@@ -55,7 +55,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $date_create = task_date_create();
         $status = "backlog";
-        print_r($_FILES);
 
         $task = new Task($date_create, $status, $title, $description, $file, $deadline, $author_id, $project_id);
 

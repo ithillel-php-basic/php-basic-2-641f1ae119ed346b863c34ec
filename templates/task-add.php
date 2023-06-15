@@ -31,64 +31,59 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="inputName">Назва задачі</label>
-                                <?php if (empty($error_task_arr['title_error']) && empty($error_task_arr['required_fields_error'])) { ?>
-                                    <input type="text" id="inputName" class="form-control" name="title">
-                                <?php } else { ?>
-                                    <input type="text" id="inputName" class="form-control is-invalid" name="title">
-                                    <?php foreach ($error_task_arr as $key => $error_message) {
-                                        if ($key == "title_error" || $key == "required_fields_error") { ?>
-                                            <span id="inputName-error" class="error invalid-feedback"><?php echo $error_message; ?></span>
-                                        <?php }
-                                    }
-                                } ?>
+                                <?php
+                                $selectClass = 'form-control';
+                                if (!empty($error_task_arr['required_fields_error']) || !empty($error_task_arr['title_error'])) {
+                                    $selectClass .= ' is-invalid';
+                                }
+                                ?>
+                                    <input type="text" id="inputName" class="<?php echo $selectClass; ?>" name="title">
+                                <?php foreach ($error_task_arr as $key => $error_message) {
+                                        if ($key == "title_error" || $key == "required_fields_error") {
+                                            echo '<span id="inputName-error" class="error invalid-feedback">' . $error_message . '</span>';
+                                         }
+                                    } ?>
+                            </div>
                                 <div class="form-group">
                                     <label for="inputDescription">Опис задачі</label>
-                                    <?php if (empty($error_task_arr['required_fields_error'])) { ?>
-                                        <textarea id="inputDescription" class="form-control" rows="4" name="description"></textarea>
-                                    <?php } else {
-                                        foreach ($error_task_arr as $key => $error_message) {
-                                            if ($key == "required_fields_error") { ?>
-                                                <textarea id="inputDescription" class="form-control is-invalid" rows="4" name="description"></textarea>
-                                                <span id="inputDescription-error" class="error invalid-feedback"><?php echo $error_message; ?></span>
-                                                <?php
+                                    <?php
+                                    $selectClass = 'form-control';
+                                    if (!empty($error_task_arr['required_fields_error'])) {
+                                        $selectClass .= ' is-invalid';
+                                    }
+                                    ?>
+                                        <textarea id="inputDescription" class="<?php echo $selectClass; ?>" rows="4" name="description"></textarea>
+                                    <?php foreach ($error_task_arr as $key => $error_message) {
+                                            if ($key == "required_fields_error") {
+                                                echo '<span id="inputDescription-error" class="error invalid-feedback">' . $error_message . '</span>';
+                                            }
+                                        } ?>
+                                </div>
+                            <div class="form-group">
+                                <?php
+                                $selectClass = 'form-control';
+                                if (!empty($error_task_arr['required_fields_error']) || !empty($error_task_arr['project_id_error'])) {
+                                    $selectClass .= ' is-invalid';
+                                }
+                                ?>
+                                <select class="<?php echo $selectClass; ?>" id="selectProject" name="project_id">
+                                    <?php foreach ($arr_project as $project) {
+                                        foreach ($project as $key => $value) {
+                                            if ($key == "id") {
+                                                $project_id = $value;
+                                            } else if ($key == "name") {
+                                                echo '<option value="' . $project_id . '">' . $value . '</option>';
                                             }
                                         }
                                     } ?>
-                                </div>
-                                <div class="form-group">
-                                    <?php if (empty($error_task_arr['required_fields_error']) && empty($error_task_arr['project_id_error'])) { ?>
-                                        <select class="form-control" id="selectProject" name="project_id">
-                                            <?php foreach ($arr_project as $project) {
-                                                foreach ($project as $key => $value) {
-                                                    if ($key == "id") {
-                                                        $project_id = $value;
-                                                    }else if ($key == "name") {
-                                                        echo '<option value="' . $project_id . '" >' . $value . '</option>';
-                                                    }
-                                                }
-                                            } ?>
-                                        </select>
-                                    <?php } else {
-                                        foreach ($error_task_arr as $key => $error_message) {
-                                            if ($key == "project_id_error" || $key == "required_fields_error") { ?>
-                                                <select class="form-control is-invalid" id="selectProject" name="project_id">
-                                                    <?php foreach ($arr_project as $project) {
-                                                        foreach ($project as $key => $value) {
-                                                            if ($key == "id") {
-                                                                $project_id = $value;
-                                                            }else if ($key == "name") {
-                                                                echo '<option value="' . $project_id . '" >' . $value . '</option>';
-                                                            }
-                                                        }
-                                                    } ?>
-                                                </select>
-                                                <span id="selectProject-error" class="error invalid-feedback"><?php echo $error_message; ?></span>
-                                                <?php
-                                            }
-                                        }
-                                    } ?>
-                                </div>
+                                </select>
+                                <?php foreach ($error_task_arr as $key => $error_message) {
+                                    if ($key == "project_id_error" || $key == "required_fields_error") {
+                                        echo '<span id="selectProject-error" class="error invalid-feedback">' . $error_message . '</span>';
+                                    }
+                                } ?>
                             </div>
+                        </div>
                             <!-- /.card-body -->
                         </div>
                         <!-- /.card -->
@@ -107,31 +102,34 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="inputDate">Дата виконання</label>
-                                    <?php if (empty($error_task_arr['required_fields_error']) && empty($error_task_arr['deadline_error'])) { ?>
-                                        <input type="date" id="inputDate" class="form-control" name="deadline">
-                                    <?php } else {
-                                        foreach ($error_task_arr as $key => $error_message) {
-                                            if ($key == "deadline_error" || $key == "required_fields_error") { ?>
-                                                <input type="date" id="inputDate" class="form-control is-invalid" name="deadline">
-                                                <span id="inputDate-error" class="error invalid-feedback"><?php echo $error_message; ?></span>
-                                                <?php
+                                    <?php
+                                    $selectClass = 'form-control';
+                                    if (!empty($error_task_arr['required_fields_error']) || !empty($error_task_arr['deadline_error'])) {
+                                        $selectClass .= ' is-invalid';
+                                    }
+                                    ?>
+                                        <input type="date" id="inputDate" class="<?php echo $selectClass; ?>" name="deadline">
+                                    <?php foreach ($error_task_arr as $key => $error_message) {
+                                            if ($key == "deadline_error" || $key == "required_fields_error") {
+                                                echo '<span id="inputDate-error" class="error invalid-feedback">' . $error_message . '</span>';
                                             }
-                                        }
-                                    } ?>
+                                        }?>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputTaskFile">Прикріпити файл</label>
-                                    <?php if (empty($error_task_arr['required_fields_error'])) { ?>
-                                        <input type="file" id="inputTaskFile" class="form-control" name="file">
-                                    <?php } else {
-                                        foreach ($error_task_arr as $key => $error_message) {
-                                            if ($key == "required_fields_error") { ?>
-                                                <input type="file" id="inputTaskFile" class="form-control is-invalid" name="file">
-                                                <span id="inputTaskFile-error" class="error invalid-feedback"><?php echo $error_message; ?></span>
-                                                <?php
+                                    <?php
+                                    $selectClass = 'form-control';
+                                    if (!empty($error_task_arr['required_fields_error'])) {
+                                        $selectClass .= ' is-invalid';
+                                    }
+                                    ?>
+                                        <input type="file" id="inputTaskFile" class="<?php echo $selectClass; ?>" name="file">
+                                    <?php foreach ($error_task_arr as $key => $error_message) {
+                                            if ($key == "required_fields_error") {
+                                                echo '<span id="inputTaskFile-error" class="error invalid-feedback">' . $error_message . '</span>';
+
                                             }
-                                        }
-                                    } ?>
+                                        } ?>
                                 </div>
                             </div>
                             <!-- /.card-body -->
