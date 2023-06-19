@@ -1,7 +1,7 @@
 <?php
 
 function getTasks($conn, $author_id, $project_id = '') {
-    $query = "SELECT title, deadline, project_id, status FROM task WHERE author_id = ?";
+    $query = "SELECT title, deadline, project_id, status, file FROM task WHERE author_id = ?";
     if($project_id != ''){
         $query .= " AND project_id = ?";
     }
@@ -23,6 +23,12 @@ function getTasks($conn, $author_id, $project_id = '') {
     }
     $result = mysqli_stmt_get_result($stmt);
     return mysqli_fetch_all($result, MYSQLI_ASSOC);
+}
+
+function task_date_create()
+{
+    $date_now = time();
+    return date("Y-m-d H:i:s", $date_now);
 }
 
 function task_time($date)

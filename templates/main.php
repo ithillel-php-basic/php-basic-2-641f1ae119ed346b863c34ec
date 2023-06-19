@@ -10,7 +10,7 @@
                 <a href="index.php" class="nav-link">Дошка</a>
             </li>
             <li class="nav-item bg-primary d-none d-sm-inline-block">
-                <a href="index.php" class="nav-link">Створити задачу</a>
+                <a href="add.php" class="nav-link">Створити задачу</a>
             </li>
         </ul>
 
@@ -97,7 +97,7 @@
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper kanban">
-        <?php echo $content_kanban; ?>
+        <?php echo $content; ?>
     </div>
 
     <footer class="main-footer">
